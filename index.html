@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <style>
     :root {
       --bg:      #07070f;
@@ -79,7 +81,9 @@
     .nav-links a:hover::after { width:100%; }
 
     /* SECTIONS */
-    section { position:relative; z-index:2; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:6rem 2rem; }
+    section { position:relative; z-index:2; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:6rem 2rem; pointer-events: none; }
+    /* Let interactions pass through section background but catch on cards */
+    .btn, nav, .glass, .hero-chips, .edu-box { pointer-events: auto; }
 
     /* HERO */
     #hero { flex-direction:column; text-align:center; gap:0; }
@@ -117,7 +121,7 @@
 
     .hero-btns {
       margin-top:2.4rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;
-      opacity:0; animation:upFade .7s .75s forwards;
+      opacity:0; animation:upFade .7s .75s forwards; pointer-events: auto;
     }
 
     .btn {
@@ -137,7 +141,7 @@
     /* Chip pills for hero */
     .hero-chips {
       margin-top:2rem; display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap;
-      opacity:0; animation:upFade .7s .95s forwards;
+      opacity:0; animation:upFade .7s .95s forwards; pointer-events: auto;
     }
     .chip {
       font-family:'Space Mono',monospace; font-size:.62rem; letter-spacing:.08em;
@@ -151,7 +155,7 @@
     .glass { background:var(--panel); backdrop-filter:blur(14px); border:1px solid var(--border); border-radius:3px; }
 
     /* SEC HEADER */
-    .sh { margin-bottom:3.5rem; }
+    .sh { margin-bottom:3.5rem; pointer-events: auto; }
     .slbl {
       font-family:'Space Mono',monospace; font-size:.64rem; letter-spacing:.3em; text-transform:uppercase;
       color:var(--vbright); margin-bottom:.8rem;
@@ -165,7 +169,7 @@
     #about { background:linear-gradient(180deg,rgba(13,13,28,.75) 0%,transparent 100%); }
     .about-grid { max-width:1100px; width:100%; display:grid; grid-template-columns:220px 1fr; gap:5rem; align-items:center; }
 
-    .orb-wrap { display:flex; justify-content:center; position:relative; }
+    .orb-wrap { display:flex; justify-content:center; position:relative; pointer-events: auto; }
     .orb-outer { position:absolute; width:270px; height:270px; border-radius:50%; border:1px dashed rgba(139,92,246,.18); animation:spin 22s linear infinite; }
     .orb-outer::before { content:''; position:absolute; top:-5px; left:50%; width:10px; height:10px; border-radius:50%; background:var(--violet); box-shadow:var(--gv); transform:translateX(-50%); }
     .orb {
@@ -178,6 +182,7 @@
       animation:pulse 4s ease-in-out infinite; position:relative; z-index:2;
     }
 
+    .atext { pointer-events: auto; }
     .atext p { font-size:1rem; line-height:1.92; color:var(--muted); margin-bottom:1.1rem; }
     .atext p b { color:var(--white); font-weight:500; }
     .atext p i { color:var(--cyan); font-style:normal; }
@@ -187,6 +192,7 @@
       margin-top:1.8rem; padding:1.1rem 1.4rem;
       border-left:2px solid var(--violet);
       background:rgba(139,92,246,.05);
+      pointer-events: auto;
     }
     .edu-title { font-family:'Space Mono',monospace; font-size:.85rem; font-weight:700; color:var(--white); margin-bottom:.3rem; }
     .edu-sub { font-size:.82rem; color:var(--muted); }
@@ -194,12 +200,13 @@
 
     /* PROJECTS */
     #projects { flex-direction:column; }
-    .pgrid-wrap { max-width:1100px; width:100%; }
+    .pgrid-wrap { max-width:1100px; width:100%; pointer-events: auto; }
     .pgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.2rem; }
 
     .pcard {
       padding:2rem; transition:transform .42s cubic-bezier(.23,1,.32,1),box-shadow .42s,border-color .42s;
       position:relative; overflow:hidden; transform-style:preserve-3d;
+      pointer-events: auto;
     }
     .pcard::before {
       content:''; position:absolute; top:0; left:0; right:0; height:2px;
@@ -246,9 +253,9 @@
 
     /* SKILLS */
     #skills { flex-direction:column; background:linear-gradient(180deg,transparent,rgba(13,13,28,.6) 100%); }
-    .sgrid-wrap { max-width:1100px; width:100%; }
+    .sgrid-wrap { max-width:1100px; width:100%; pointer-events: auto; }
     .sgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.3rem; }
-    .sgroup { padding:1.8rem; }
+    .sgroup { padding:1.8rem; pointer-events: auto; }
     .sgroup-title {
       font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase;
       color:var(--vbright); margin-bottom:1.4rem;
@@ -272,10 +279,10 @@
     /* Achievements */
     #achievements { flex-direction:column; }
     .ach-wrap { max-width:1100px; width:100%; }
-    .ach-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1rem; }
+    .ach-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1rem; pointer-events: auto; }
     .ach-card {
       padding:1.6rem; display:flex; flex-direction:column; gap:.7rem;
-      transition:all .3s;
+      transition:all .3s; pointer-events: auto;
     }
     .ach-card:hover { border-color:rgba(139,92,246,.4); transform:translateY(-3px); box-shadow:var(--gv); }
     .ach-icon { font-size:1.6rem; filter:drop-shadow(0 0 8px rgba(139,92,246,.5)); }
@@ -284,14 +291,14 @@
 
     /* CONTACT */
     #contact { flex-direction:column; }
-    .contact-wrap { max-width:680px; width:100%; text-align:center; }
-    .cdesc { font-size:1rem; color:var(--muted); line-height:1.9; margin:1.4rem 0 2.8rem; }
-    .clinks { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .contact-wrap { max-width:680px; width:100%; text-align:center; pointer-events: auto; }
+    .cdesc { font-size:1rem; color:var(--muted); line-height:1.9; margin:1.4rem 0 2.8rem; pointer-events: auto; }
+    .clinks { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; pointer-events: auto; }
     .clink {
       display:flex; align-items:center; gap:.75rem;
       padding:.95rem 1.8rem; text-decoration:none;
       color:var(--white); font-size:.84rem; font-weight:500;
-      transition:all .3s; border-radius:2px;
+      transition:all .3s; border-radius:2px; pointer-events: auto;
     }
     .clink:hover { border-color:rgba(139,92,246,.5); transform:translateY(-3px); box-shadow:var(--gv); color:var(--vbright); }
     .clink svg { width:18px; height:18px; fill:currentColor; }
@@ -299,7 +306,7 @@
     /* FOOTER */
     footer {
       position:relative; z-index:2; text-align:center; padding:2.5rem;
-      border-top:1px solid rgba(139,92,246,.07);
+      border-top:1px solid rgba(139,92,246,.07); pointer-events: auto;
       font-family:'Space Mono',monospace; font-size:.68rem; color:var(--muted); letter-spacing:.07em;
     }
     footer em { color:var(--vbright); font-style:normal; }
@@ -590,16 +597,60 @@
     el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
   });
 
-  // NEURAL MESH (Three.js)
+  // NEURAL MESH + 3D PC (Three.js)
   const canvas = document.getElementById('neural');
   const renderer = new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
   renderer.setSize(window.innerWidth,window.innerHeight);
+  // Important for standard GLTF lighting matching
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
 
   const scene = new THREE.Scene();
   const cam = new THREE.PerspectiveCamera(55,window.innerWidth/window.innerHeight,0.1,500);
   cam.position.z = 85;
 
+  // Orbit controls for 360 dragging
+  const controls = new THREE.OrbitControls(cam, renderer.domElement);
+  controls.enableZoom = false;
+  controls.enablePan = false;
+  controls.autoRotate = false;
+  controls.minPolarAngle = Math.PI / 4; 
+  controls.maxPolarAngle = Math.PI / 1.5; 
+
+  // Add lights for the 3D Desktop PC to render correctly
+  const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.2);
+  scene.add(hemiLight);
+  const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
+  dirLight.position.set(0, 50, 50);
+  scene.add(dirLight);
+
+  // Load the Desktop PC model
+  let pcModel;
+  const loader = new THREE.GLTFLoader();
+  loader.load('./desktop_pc/scene.gltf', function(gltf) {
+    pcModel = gltf.scene;
+    // Center it so OrbitControls revolves around it cleanly
+    pcModel.scale.set(6, 6, 6);
+    pcModel.position.set(0, -18, 0); 
+    pcModel.rotation.set(0.1, -0.6, 0.05); 
+
+    // Make sure all materials render properly
+    pcModel.traverse(node => {
+        if(node.isMesh) {
+            // Apply slight metallic polish
+            if(node.material) {
+                node.material.metalness = Math.max(0.2, node.material.metalness || 0);
+            }
+        }
+    });
+
+    scene.add(pcModel);
+  });
+
+
+  // Render nodes
   const N=130, DIST=24;
   const pos=[], vel=[];
   for(let i=0;i<N;i++){
@@ -624,7 +675,22 @@
   const VC=[.545,.361,.965], CC=[.133,.827,.933];
   let nmx=0,nmy=0;
   document.addEventListener('mousemove',e=>{ nmx=(e.clientX/window.innerWidth-.5)*2; nmy=-(e.clientY/window.innerHeight-.5)*2; });
-  window.addEventListener('resize',()=>{ cam.aspect=window.innerWidth/window.innerHeight; cam.updateProjectionMatrix(); renderer.setSize(window.innerWidth,window.innerHeight); });
+  window.addEventListener('resize',()=>{ 
+    cam.aspect=window.innerWidth/window.innerHeight; 
+    cam.updateProjectionMatrix(); 
+    renderer.setSize(window.innerWidth,window.innerHeight); 
+    
+    // Scale down PC on mobile dynamically
+    if (pcModel) {
+      if (window.innerWidth < 768) {
+        pcModel.scale.set(4, 4, 4);
+        pcModel.position.set(0, -15, 0);
+      } else {
+        pcModel.scale.set(6, 6, 6);
+        pcModel.position.set(0, -18, 0); 
+      }
+    }
+  });
 
   function updateMesh(){
     let lc=0;
@@ -660,9 +726,21 @@
     }
     ptGeo.attributes.position.needsUpdate=true;
     updateMesh();
-    scene.rotation.y+=((nmx*.1)-scene.rotation.y)*.018;
-    scene.rotation.x+=((-nmy*.05)-scene.rotation.x)*.018;
+
+    // Subtle PC model hover/sway animation reacting to mouse
+    if (pcModel) {
+        pcModel.position.y = (window.innerWidth < 768 ? -15 : -18) + Math.sin(t*0.5) * 2;
+        // Comment out rotation so dragging is smooth and reliable
+        // pcModel.rotation.y = -0.6 + (nmx * 0.1);
+        // pcModel.rotation.x = 0.1 + (-nmy * 0.1);
+    }
+
+    // Keep scene sway very subtle
+    scene.rotation.y+=((nmx*.03)-scene.rotation.y)*.018;
+    scene.rotation.x+=((-nmy*.02)-scene.rotation.x)*.018;
     scene.rotation.z=Math.sin(t*.25)*.008;
+
+    controls.update(); // Update 360 drag logic
     renderer.render(scene,cam);
   })();
 
