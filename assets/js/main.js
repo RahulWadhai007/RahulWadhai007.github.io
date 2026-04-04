@@ -65,7 +65,7 @@
     // Center it so OrbitControls revolves around it cleanly
     pcModel.scale.set(6, 6, 6);
     pcModel.position.set(0, -18, 0); 
-    pcModel.rotation.set(0.1, -0.6, 0.05); 
+    pcModel.rotation.set(0, -0.6, 0); 
 
     // Make sure all materials render properly
     pcModel.traverse(node => {
