@@ -205,7 +205,7 @@
 
     .pnum { font-family:'Space Mono',monospace; font-size:.6rem; color:var(--violet); letter-spacing:.2em; margin-bottom:1rem; }
     .pico { font-size:1.9rem; margin-bottom:.8rem; filter:drop-shadow(0 0 10px rgba(139,92,246,.5)); }
-    .ptitle { font-family:'Space Mono',monospace; font-size:.98rem; font-weight:700; color:var(--white); margin-bottom:.5rem; }
+    .ptitle { font-family:'Space Mono',monospace; font-size:1.15rem; font-weight:700; color:var(--white); margin-bottom:.6rem; }
     .pstack { font-family:'Space Mono',monospace; font-size:.6rem; color:var(--cyan); letter-spacing:.08em; margin-bottom:.9rem; opacity:1; }
 
     /* Impact pills */
@@ -236,7 +236,7 @@
       border:1px solid rgba(34,211,238,.2); color:var(--cyan); background:rgba(34,211,238,.05);
       font-family:'Space Mono',monospace;
     }
-    .tagv { border-color:rgba(139,92,246,.2); color:var(--vbright); background:rgba(139,92,246,.05); }
+    .tagv { border-color:rgba(139,92,246,.4); color:var(--white); background:rgba(139,92,246,.2); font-weight:700; }
 
     /* SKILLS */
     #skills { flex-direction:column; background:linear-gradient(180deg,transparent,rgba(13,13,28,.6) 100%); }
@@ -308,8 +308,10 @@
     .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; } .d4 { transition-delay:.4s; }
 
     @media(max-width:768px){
-      nav { padding:1rem 1.5rem; }
-      .nav-links { display:none; }
+      nav { padding:1rem 1.5rem; flex-direction:column; gap:0.6rem; align-items:center; }
+      .nav-links { gap:1rem; flex-wrap:wrap; justify-content:center; }
+      .nav-links a { font-size: 0.7rem; letter-spacing: 0.05em; }
       .about-grid { grid-template-columns:1fr; }
       .orb-wrap { display:none; }
+      .pcard .btn { flex-basis: 100%; }
     }
