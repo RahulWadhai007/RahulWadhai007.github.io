@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rahul Wadhai — AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <div id="cur-dot"></div>
+  <div id="cur-ring"></div>
+  <canvas id="neural"></canvas>
+  <div id="ov"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-btn logo-link" style="text-decoration:none;"><div class="logo"><em>Rahul</em>Wadhai<s>007</s></div></a>
+    <ul class="nav-links">
+      <li><a href="about.html" class="nav-btn">About</a></li>
+      <li><a href="projects.html" class="nav-btn">Projects</a></li>
+      <li><a href="skills.html" class="nav-btn">Skills</a></li>
+      <li><a href="activity.html" class="nav-btn">Engagements</a></li>
+      <li><a href="contact.html" class="nav-btn">Contact</a></li>
+      <li><button class="theme-toggle" id="theme-toggle" title="Toggle Theme"></button></li>
+    </ul>
+  </nav>
+
+    <main id="page-content" class="page-transition">
+<!-- SKILLS -->
+  <section id="skills">
+    <div class="sgrid-wrap">
+      <div class="sh rev">
+        <p class="slbl">03 — Skills</p>
+        <h2 class="stitle">Tech <span>Arsenal</span></h2>
+      </div>
+      <div class="sgrid">
+
+        <div class="sgroup glass rev d1">
+          <div class="sgroup-title">GenAI &amp; Agents</div>
+          <div class="ptags" style="margin-top:-0.5rem">
+            <span class="tag tagv">LangGraph (Stateful Agents)</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">RAG Pipelines</span>
+            <span class="tag tagv">Prompt Engineering</span>
+            <span class="tag">LLM Fine-tuning</span>
+          </div>
+        </div>
+
+        <div class="sgroup glass rev d2">
+          <div class="sgroup-title">Deep Learning &amp; Vision</div>
+          <div class="ptags" style="margin-top:-0.5rem">
+            <span class="tag">Neural Networks</span>
+            <span class="tag tagv">Transformers</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag tagv">OpenCV</span>
+            <span class="tag c" style="border-color:rgba(34,211,238,.4);color:var(--white);background:rgba(34,211,238,.15)">Edge Inference &amp; Hardware Optimization (LM Studio, Ollama, 4GB VRAM)</span>
+          </div>
+        </div>
+
+        <div class="sgroup glass rev d3">
+          <div class="sgroup-title">Backend &amp; Cloud</div>
+          <div class="ptags" style="margin-top:-0.5rem">
+            <span class="tag tagv">Python (FastAPI)</span>
+            <span class="tag">Docker</span>
+            <span class="tag tagv">Kubernetes (K8s)</span>
+            <span class="tag">AWS (EC2, S3)</span>
+          </div>
+        </div>
+
+        <div class="sgroup glass rev d4">
+          <div class="sgroup-title">Databases &amp; DevTools</div>
+          <div class="ptags" style="margin-top:-0.5rem">
+            <span class="tag">Vector DBs (ChromaDB / Pinecone)</span>
+            <span class="tag tagv">SQL</span>
+            <span class="tag">Linux</span>
+            <span class="tag tagv">Git &amp; CI/CD</span>
+            <span class="tag">VS Code Integration</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+  </main>
+  <footer>Designed &amp; built by <em>RahulWadhai007</em> · &copy; 2026 · All agents operational.</footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
