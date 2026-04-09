@@ -69,19 +69,19 @@
 
           </div>
         </div>
-        <!-- Project 1 -->
+        <!-- Project 1: Agentic Text-to-SQL Engine -->
         <div class="pcard glass rev d1" data-tilt>
-          <div class="pnum">// PROJECT_01 · LangGraph &amp; FastAPI</div>
+          <div class="pnum">// PROJECT_01 · LangGraph &amp; PostgreSQL</div>
           <div class="pico">🧠</div>
-          <div class="ptitle">Self-Reflective Multi-Agent RAG System</div>
-          <div class="pstack">LangGraph · OpenAI / Llama-3 · ChromaDB · FastAPI · Docker</div>
+          <div class="ptitle">Agentic Text-to-SQL Engine with Autonomous Self-Correction</div>
+          <div class="pstack">Python · LangGraph · PostgreSQL · Llama-3 (8B) · FastAPI · Docker</div>
           <div class="pimpact">
-            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Challenge:</b> Standard RAG suffers from poor retrieval quality and hallucinations.</span></div>
-            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Solution:</b> Agentic RAG using LangGraph with "Self-Correction" — evaluates retrieved docs and re-plans search strategy when data is insufficient.</span></div>
+            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Challenge:</b> Naive text-to-SQL wrappers crash on complex queries — hallucinated schemas, syntax errors, and broken joins make them unreliable for production BI.</span></div>
+            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Solution:</b> Architected a stateful AI agent using LangGraph that translates natural language into complex PostgreSQL queries with a deterministic self-correction loop — the agent executes drafted SQL in a containerized sandbox, reads system error logs, and autonomously rewrites until execution succeeds.</span></div>
           </div>
-          <div class="metric">📉 ~30% reduction in hallucination rate</div>
+          <div class="metric">✅ 100% syntax validity before returning data to users</div>
           <div class="ptags">
-            <span class="tag">LangGraph</span><span class="tag tagv">OpenAI</span><span class="tag">ChromaDB</span><span class="tag tagv">FastAPI</span><span class="tag">Docker</span>
+            <span class="tag tagv">LangGraph</span><span class="tag">PostgreSQL</span><span class="tag tagv">Llama-3</span><span class="tag">FastAPI</span><span class="tag tagv">Docker</span><span class="tag">Python</span>
           </div>
           <div style="margin-top:1.5rem; display:flex; gap:0.6rem; flex-wrap:wrap">
             <a href="#" target="_blank" class="btn btn-g" style="font-size:0.65rem; padding:0.65rem 1rem; flex:1; justify-content:center; color:var(--white);">[<>] View Source</a>
@@ -89,19 +89,39 @@
           </div>
         </div>
 
-        <!-- Project 2 -->
+        <!-- Project 2: PII Privacy Firewall AI Proxy -->
         <div class="pcard glass rev d2" data-tilt>
-          <div class="pnum">// PROJECT_02 · Kubernetes &amp; GenAI</div>
-          <div class="pico">⚙️</div>
-          <div class="ptitle">AI-SRE: Automated Log Diagnosis Agent</div>
-          <div class="pstack">Kubernetes · Docker · LangChain Agents · Python · AWS EC2</div>
+          <div class="pnum">// PROJECT_02 · Enterprise AI Security</div>
+          <div class="pico">🛡️</div>
+          <div class="ptitle">Enterprise AI Gateway &amp; PII Privacy Proxy</div>
+          <div class="pstack">Python · FastAPI · Hugging Face (RoBERTa / Presidio) · Docker · Redis</div>
           <div class="pimpact">
-            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Challenge:</b> Debugging distributed Kubernetes systems is time-consuming for developers.</span></div>
-            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Solution:</b> AI agent monitors FastAPI logs within K8s, uses LLM to diagnose root causes and suggests specific code fixes or config changes.</span></div>
+            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Challenge:</b> "Shadow AI" data leakage — employees paste proprietary code, customer PII, and financial data into cloud LLMs, violating GDPR and HIPAA compliance.</span></div>
+            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Solution:</b> Built an AI middleware proxy that intercepts prompts via a local NER pipeline (RoBERTa/Presidio), masks PII before it leaves the network, sends sanitized prompts to the cloud LLM, then re-injects original data into the response — enabling complex reasoning without ever exposing protected data.</span></div>
           </div>
-          <div class="metric metric-v">⚡ 50% reduction in Time-to-Diagnosis</div>
+          <div class="metric metric-v">🔒 Zero PII exposure to external LLM APIs (HIPAA/GDPR compliant)</div>
           <div class="ptags">
-            <span class="tag">Kubernetes</span><span class="tag tagv">LangChain</span><span class="tag">Docker</span><span class="tag tagv">AWS EC2</span><span class="tag">Python</span>
+            <span class="tag tagv">FastAPI</span><span class="tag">RoBERTa</span><span class="tag tagv">Presidio</span><span class="tag">Docker</span><span class="tag tagv">Redis</span><span class="tag">NER Pipeline</span>
+          </div>
+          <div style="margin-top:1.5rem; display:flex; gap:0.6rem; flex-wrap:wrap">
+            <a href="#" target="_blank" class="btn btn-g" style="font-size:0.65rem; padding:0.65rem 1rem; flex:1; justify-content:center; color:var(--white);">[<>] View Source</a>
+            <a href="#" target="_blank" class="btn btn-p" style="font-size:0.65rem; padding:0.65rem 1rem; flex:1; justify-content:center; box-shadow:none;">(▶) Watch Demo</a>
+          </div>
+        </div>
+
+        <!-- Project 3: Automated MLOps Pipeline -->
+        <div class="pcard glass rev d3" data-tilt>
+          <div class="pnum">// PROJECT_03 · MLOps &amp; Fine-Tuning</div>
+          <div class="pico">⚗️</div>
+          <div class="ptitle">Automated MLOps Pipeline for LLM Synthetic Distillation</div>
+          <div class="pstack">Python · PyTorch · Hugging Face (PEFT / LoRA) · FastAPI · SQLite · Docker</div>
+          <div class="pimpact">
+            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Challenge:</b> Running heavy foundation models (GPT-4o) for repetitive data extraction tasks is cost-prohibitive at scale — companies hemorrhage compute spend on tasks a smaller model could handle.</span></div>
+            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Solution:</b> Designed an end-to-end MLOps pipeline that intercepts high-quality JSON outputs from a "Teacher" model into a local SQLite database, then automatically triggers LoRA/QLoRA fine-tuning on a 2B "Student" model once a 500-sample threshold is reached — enabling seamless endpoint swap from heavy to lightweight inference.</span></div>
+          </div>
+          <div class="metric">💰 90%+ reduction in token/compute costs while maintaining task accuracy</div>
+          <div class="ptags">
+            <span class="tag tagv">PyTorch</span><span class="tag">LoRA/QLoRA</span><span class="tag tagv">Hugging Face</span><span class="tag">FastAPI</span><span class="tag tagv">SQLite</span><span class="tag">Docker</span>
           </div>
           <div style="margin-top:1.5rem; display:flex; gap:0.6rem; flex-wrap:wrap">
             <a href="#" target="_blank" class="btn btn-g" style="font-size:0.65rem; padding:0.65rem 1rem; flex:1; justify-content:center; color:var(--white);">[<>] View Source</a>
