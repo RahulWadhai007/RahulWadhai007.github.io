@@ -23,16 +23,7 @@ function type(){
 }
 setTimeout(type, 1200);
 
-// ─── CURSOR ───
-const dot  = document.getElementById('cur-dot');
-const ring = document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
-(function anim(){ rx+=(mx-rx)*.1; ry+=(my-ry)*.1; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(anim); })();
-document.querySelectorAll('a,button,.pcard,.ach-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
-});
+// ─── CURSOR (disabled — using default system cursor) ───
 
 // ─── NEURAL MESH + 3D PC (Three.js) ───
 const canvas = document.getElementById('neural');
@@ -160,59 +151,19 @@ let t=0;
   ptGeo.attributes.position.needsUpdate=true;
   updateMesh();
 
-  // Subtle PC model hover/sway animation reacting to mouse
+  // Subtle PC model sway animation (no mouse tracking)
   if (pcModel) {
       pcModel.position.y = (window.innerWidth < 768 ? -15 : -18) + Math.sin(t*0.5) * 2;
   }
-
-  // Keep scene sway very subtle
-  scene.rotation.y+=((nmx*.03)-scene.rotation.y)*.018;
-  scene.rotation.x+=((-nmy*.02)-scene.rotation.x)*.018;
-  scene.rotation.z=Math.sin(t*.25)*.008;
 
   controls.update();
   renderer.render(scene,cam);
 })();
 
 // ═══════════════════════════════════════════════════════
-// 3D TILT
+// 3D TILT (disabled — cards stay static)
 // ═══════════════════════════════════════════════════════
-function resetTilt(card) {
-  card.style.transform = 'perspective(700px) rotateY(0) rotateX(0) scale(1)';
-}
-
-function applyTilt(card, clientX, clientY) {
-  const r = card.getBoundingClientRect();
-  const cx = (clientX - r.left) / r.width - 0.5;
-  const cy = (clientY - r.top) / r.height - 0.5;
-  // Inverted signs so the hovered corner visually pushes backward.
-  card.style.transform = `perspective(700px) rotateY(${-cx * 15}deg) rotateX(${cy * 11}deg) scale(1.03)`;
-}
-
-function initTilt() {
-  document.querySelectorAll('.pcard').forEach(card=>{
-    if (card._tiltBound) return;
-    card._tiltBound = true;
-
-    card.addEventListener('pointermove', e => {
-      applyTilt(card, e.clientX, e.clientY);
-    });
-
-    card.addEventListener('pointerleave', () => {
-      resetTilt(card);
-    });
-
-    // Fallback for browsers/devices that don't emit pointer events consistently.
-    card.addEventListener('mousemove', e => {
-      applyTilt(card, e.clientX, e.clientY);
-    });
-
-    card.addEventListener('mouseleave', () => {
-      resetTilt(card);
-    });
-  });
-}
-initTilt();
+function initTilt() { /* disabled */ }
 
 // ─── SCROLL REVEAL + SKILL BARS ───
 const io = new IntersectionObserver(entries=>{
@@ -298,15 +249,6 @@ function reInitDOM() {
   
   // Re-trigger entrance animations with staggered delays
   triggerEntranceAnimations();
-  
-  // Re-bind mouse hover effects for the custom cursor
-  document.querySelectorAll('a,button,.pcard,.ach-card').forEach(el=>{
-    el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-    el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
-  });
-
-  // Re-bind continuous 3D tilt on new cards
-  initTilt();
 }
 
 
@@ -340,20 +282,6 @@ document.addEventListener('click', e => {
 // GODMODE PHYSICS ENGINE — Nav Indicator + PC Shadow
 // ═══════════════════════════════════════════════════════
 function initGodmodePhysics() {
-  const navLinks = document.querySelector('.nav-links');
-  if (navLinks && !document.querySelector('.nav-ind')) {
-    const ind = document.createElement('div');
-    ind.className = 'nav-ind';
-    navLinks.appendChild(ind);
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('mouseenter', e => {
-        ind.style.width = `${e.target.offsetWidth}px`;
-        ind.style.left = `${e.target.offsetLeft}px`;
-        ind.style.opacity = 1;
-      });
-    });
-    navLinks.addEventListener('mouseleave', () => ind.style.opacity = 0);
-  }
   if (!document.getElementById('pc-shadow')) {
     const shadow = document.createElement('div');
     shadow.id = 'pc-shadow';
@@ -363,38 +291,8 @@ function initGodmodePhysics() {
 
 
 // ═══════════════════════════════════════════════════════
-// PARALLAX + MAGNETIC BUTTON PULL
+// PARALLAX + MAGNETIC BUTTON PULL (disabled)
 // ═══════════════════════════════════════════════════════
-document.addEventListener('mousemove', e => {
-  const dx = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
-  const dy = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-  // .pcard EXCLUDED — cards stay perfectly still, only move on click
-  // Text movement parallax has been disabled as requested
-  // document.querySelectorAll('.hero-name').forEach(el => el.style.translate = `${dx * -20}px ${dy * -20}px`);
-  // document.querySelectorAll('.hero-sub, .hero-chips, .stitle').forEach(el => el.style.translate = `${dx * -8}px ${dy * -8}px`);
-  document.querySelectorAll('.orb-wrap').forEach(el => el.style.translate = `${dx * -30}px ${dy * -30}px`);
-
-  // Magnetic pull for buttons (exclude toggle to avoid sliding interference)
-  document.querySelectorAll('.btn, .nav-btn').forEach(btn => {
-    if (btn.classList.contains('theme-toggle')) return; // Skip toggle
-    
-    const rect = btn.getBoundingClientRect();
-    const bx = rect.left + rect.width / 2;
-    const by = rect.top + rect.height / 2;
-    const dist = Math.hypot(e.clientX - bx, e.clientY - by);
-    
-    if (dist < 100) {
-      const strength = (1 - dist / 100) * 0.45; // Eased strength
-      const tx = (e.clientX - bx) * strength;
-      const ty = (e.clientY - by) * strength;
-      btn.style.transform = `translate(${tx}px, ${ty}px) scale(${1 + strength * 0.08})`;
-      btn.style.transition = 'transform 0.15s ease-out';
-    } else {
-      btn.style.transform = '';
-      btn.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-    }
-  });
-});
 
 // ─── CLICK RIPPLE ───
 document.addEventListener('click', e => {
