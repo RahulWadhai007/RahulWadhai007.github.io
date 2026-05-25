@@ -6,10 +6,14 @@
   <title>Rahul Wadhai — AI Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <link rel="preload" href="assets/css/style.css" as="style" />
+  <link rel="preload" href="./portfolio/scene.gltf" as="fetch" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -69,19 +73,19 @@
 
           </div>
         </div>
-        <!-- Project 1: Agentic Text-to-SQL Engine -->
+        <!-- Project 1: Time-Traveling Agentic Orchestrator (from resume) -->
         <div class="pcard glass rev d1" data-tilt>
-          <div class="pnum">// PROJECT_01 · LangGraph &amp; PostgreSQL</div>
-          <div class="pico">🧠</div>
-          <div class="ptitle">Agentic Text-to-SQL Engine with Autonomous Self-Correction</div>
-          <div class="pstack">Python · LangGraph · PostgreSQL · Llama-3 (8B) · FastAPI · Docker</div>
+          <div class="pnum">// PROJECT_01 · Saga Pattern &amp; Event-Driven AI</div>
+          <div class="pico">⏳</div>
+          <div class="ptitle">Time-Traveling Agentic Orchestrator</div>
+          <div class="pstack">Python · RabbitMQ · Redis · PostgreSQL · FastAPI</div>
           <div class="pimpact">
-            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Challenge:</b> Naive text-to-SQL wrappers crash on complex queries — hallucinated schemas, syntax errors, and broken joins make them unreliable for production BI.</span></div>
-            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Solution:</b> Architected a stateful AI agent using LangGraph that translates natural language into complex PostgreSQL queries with a deterministic self-correction loop — the agent executes drafted SQL in a containerized sandbox, reads system error logs, and autonomously rewrites until execution succeeds.</span></div>
+            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Challenge:</b> Autonomous agents executing multi-step distributed transactions need guaranteed state reversibility and protection against race conditions.</span></div>
+            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Solution:</b> Architected an event-driven AI orchestrator via RabbitMQ &amp; FastAPI implementing the Saga Pattern for transactional safety. Engineered a PostgreSQL Shadow Ledger and Redis distributed locking to prevent race conditions and automatically execute reverse-chronological rollbacks on failure.</span></div>
           </div>
-          <div class="metric">✅ 100% syntax validity before returning data to users</div>
+          <div class="metric">🔄 100% state reversibility via Shadow Ledger rollbacks</div>
           <div class="ptags">
-            <span class="tag tagv">LangGraph</span><span class="tag">PostgreSQL</span><span class="tag tagv">Llama-3</span><span class="tag">FastAPI</span><span class="tag tagv">Docker</span><span class="tag">Python</span>
+            <span class="tag tagv">RabbitMQ</span><span class="tag">Redis</span><span class="tag tagv">PostgreSQL</span><span class="tag">FastAPI</span><span class="tag tagv">Saga Pattern</span><span class="tag">Python</span>
           </div>
           <div style="margin-top:1.5rem; display:flex; gap:0.6rem; flex-wrap:wrap">
             <a href="#" target="_blank" class="btn btn-g" style="font-size:0.65rem; padding:0.65rem 1rem; flex:1; justify-content:center; color:var(--white);">[<>] View Source</a>
@@ -89,9 +93,29 @@
           </div>
         </div>
 
-        <!-- Project 2: PII Privacy Firewall AI Proxy -->
+        <!-- Project 2: Agentic Text-to-SQL Engine (from resume) -->
         <div class="pcard glass rev d2" data-tilt>
-          <div class="pnum">// PROJECT_02 · Enterprise AI Security</div>
+          <div class="pnum">// PROJECT_02 · LangGraph &amp; PostgreSQL</div>
+          <div class="pico">🧠</div>
+          <div class="ptitle">Agentic Text-to-SQL Engine with Autonomous Self-Correction</div>
+          <div class="pstack">LangGraph · LLMs · PostgreSQL · Streamlit · FastAPI</div>
+          <div class="pimpact">
+            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Challenge:</b> Naive text-to-SQL wrappers crash on complex queries — hallucinated schemas, syntax errors, and broken joins make them unreliable for production BI.</span></div>
+            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Solution:</b> Engineered a stateful AI agent using LangGraph with an autonomous self-correction loop that parses PostgreSQL errors to dynamically rewrite and retry failed queries. Secured the microservice with database-layer Row-Level Security (RLS) for multi-tenant access control, exposed via REST API &amp; Streamlit dashboard.</span></div>
+          </div>
+          <div class="metric">✅ 100% syntax validity before returning data to users</div>
+          <div class="ptags">
+            <span class="tag tagv">LangGraph</span><span class="tag">PostgreSQL</span><span class="tag tagv">Streamlit</span><span class="tag">RLS</span><span class="tag tagv">FastAPI</span><span class="tag">Python</span>
+          </div>
+          <div style="margin-top:1.5rem; display:flex; gap:0.6rem; flex-wrap:wrap">
+            <a href="#" target="_blank" class="btn btn-g" style="font-size:0.65rem; padding:0.65rem 1rem; flex:1; justify-content:center; color:var(--white);">[<>] View Source</a>
+            <a href="#" target="_blank" class="btn btn-p" style="font-size:0.65rem; padding:0.65rem 1rem; flex:1; justify-content:center; box-shadow:none;">(▶) Watch Demo</a>
+          </div>
+        </div>
+
+        <!-- Project 3: PII Privacy Firewall AI Proxy -->
+        <div class="pcard glass rev d3" data-tilt>
+          <div class="pnum">// PROJECT_03 · Enterprise AI Security</div>
           <div class="pico">🛡️</div>
           <div class="ptitle">Enterprise AI Gateway &amp; PII Privacy Proxy</div>
           <div class="pstack">Python · FastAPI · Hugging Face (RoBERTa / Presidio) · Docker · Redis</div>
@@ -109,9 +133,9 @@
           </div>
         </div>
 
-        <!-- Project 3: Automated MLOps Pipeline -->
-        <div class="pcard glass rev d3" data-tilt>
-          <div class="pnum">// PROJECT_03 · MLOps &amp; Fine-Tuning</div>
+        <!-- Project 4: Automated MLOps Pipeline -->
+        <div class="pcard glass rev d4" data-tilt>
+          <div class="pnum">// PROJECT_04 · MLOps &amp; Fine-Tuning</div>
           <div class="pico">⚗️</div>
           <div class="ptitle">Automated MLOps Pipeline for LLM Synthetic Distillation</div>
           <div class="pstack">Python · PyTorch · Hugging Face (PEFT / LoRA) · FastAPI · SQLite · Docker</div>
@@ -137,6 +161,6 @@
   </main>
   <footer>Designed &amp; built by <em>RahulWadhai007</em> · &copy; 2026 · All agents operational.</footer>
 
-  <script src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>

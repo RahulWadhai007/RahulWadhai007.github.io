@@ -6,10 +6,14 @@
   <title>Rahul Wadhai — AI Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <link rel="preload" href="assets/css/style.css" as="style" />
+  <link rel="preload" href="./portfolio/scene.gltf" as="fetch" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -35,24 +39,24 @@
     <main id="page-content" class="page-transition">
 <!-- HERO -->
   <section id="hero">
-    <p class="eyebrow"> AI Engineer — NLP &amp; Deep Learning</p>
+    <p class="eyebrow"> AI Developer · Engineer Intern @ ASW Technology</p>
     <h1 class="hero-name">
       <span class="l1">Rahul Wadhai</span>
       <span class="l2 typed" id="typed-line"></span>
     </h1>
     <p class="hero-sub">
-      Specialized in <b>Agentic AI workflows</b> &amp; <b>Deep Learning pipelines</b>.<br/>
-      Proficient in <i>LangGraph</i> for multi-agent orchestration and <i>FastAPI</i> for production-ready model serving.
+      Results-driven AI Developer focused on the practical application of modern AI methodologies.<br/>
+      Building intelligent systems with <b>Agentic Workflows</b>, <b>RAG Pipelines</b>, &amp; <b>LLM Fine-Tuning</b> — powered by <i>LangChain</i>, <i>LangGraph</i>, &amp; <i>FastAPI</i>.
     </p>
     <div class="hero-chips">
       <span class="chip">LangGraph</span>
       <span class="chip">LangChain</span>
-      <span class="chip c">FastAPI</span>
-      <span class="chip">RAG</span>
-      <span class="chip c">Docker</span>
-      <span class="chip">Kubernetes</span>
+      <span class="chip c">RAG Pipelines</span>
+      <span class="chip">FastAPI</span>
+      <span class="chip c">PyTorch</span>
+      <span class="chip">Hugging Face</span>
       <span class="chip c">AWS</span>
-      <span class="chip">LLM Fine-tuning</span>
+      <span class="chip">Docker &amp; K8s</span>
     </div>
     <div class="hero-btns">
       <a href="projects.html" class="btn btn-p nav-btn">
@@ -66,6 +70,6 @@
   </main>
   <footer>Designed &amp; built by <em>RahulWadhai007</em> · &copy; 2026 · All agents operational.</footer>
 
-  <script src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>

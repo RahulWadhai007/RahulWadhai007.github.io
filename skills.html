@@ -6,10 +6,14 @@
   <title>Rahul Wadhai — AI Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <link rel="preload" href="assets/css/style.css" as="style" />
+  <link rel="preload" href="./portfolio/scene.gltf" as="fetch" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -43,45 +47,73 @@
       <div class="sgrid">
 
         <div class="sgroup glass rev d1">
-          <div class="sgroup-title">GenAI &amp; Agents</div>
+          <div class="sgroup-title">Generative AI &amp; Agentic Systems</div>
           <div class="ptags" style="margin-top:-0.5rem">
-            <span class="tag tagv">LangGraph (Stateful Agents)</span>
+            <span class="tag tagv">LLMs</span>
+            <span class="tag">Agentic Workflows</span>
+            <span class="tag tagv">RAG Pipelines</span>
             <span class="tag">LangChain</span>
-            <span class="tag">RAG Pipelines</span>
-            <span class="tag tagv">Prompt Engineering</span>
-            <span class="tag">LLM Fine-tuning</span>
+            <span class="tag tagv">LangGraph</span>
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag tagv">Embeddings</span>
           </div>
         </div>
 
         <div class="sgroup glass rev d2">
-          <div class="sgroup-title">Deep Learning &amp; Vision</div>
+          <div class="sgroup-title">Model Development &amp; NLP</div>
           <div class="ptags" style="margin-top:-0.5rem">
-            <span class="tag">Neural Networks</span>
-            <span class="tag tagv">Transformers</span>
-            <span class="tag">Computer Vision</span>
-            <span class="tag tagv">OpenCV</span>
-            <span class="tag c" style="border-color:rgba(34,211,238,.4);color:var(--white);background:rgba(34,211,238,.15)">Edge Inference &amp; Hardware Optimization (LM Studio, Ollama, 4GB VRAM)</span>
+            <span class="tag tagv">LLM Fine-Tuning (PEFT/LoRA)</span>
+            <span class="tag">Hugging Face Transformers</span>
+            <span class="tag tagv">OpenAI API</span>
+            <span class="tag">DeepSeek</span>
+            <span class="tag tagv">PyTorch</span>
           </div>
         </div>
 
         <div class="sgroup glass rev d3">
-          <div class="sgroup-title">Backend &amp; Cloud</div>
+          <div class="sgroup-title">Backend Engineering &amp; Security</div>
           <div class="ptags" style="margin-top:-0.5rem">
-            <span class="tag tagv">Python (FastAPI)</span>
-            <span class="tag">Docker</span>
-            <span class="tag tagv">Kubernetes (K8s)</span>
-            <span class="tag">AWS (EC2, S3)</span>
+            <span class="tag tagv">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag tagv">REST API (FastAPI)</span>
+            <span class="tag">OAuth 2.0</span>
+            <span class="tag tagv">JWT</span>
+            <span class="tag">RBAC</span>
+            <span class="tag tagv">Data Encryption</span>
           </div>
         </div>
 
         <div class="sgroup glass rev d4">
-          <div class="sgroup-title">Databases &amp; DevTools</div>
+          <div class="sgroup-title">Data Engineering &amp; ML</div>
           <div class="ptags" style="margin-top:-0.5rem">
-            <span class="tag">Vector DBs (ChromaDB / Pinecone)</span>
-            <span class="tag tagv">SQL</span>
-            <span class="tag">Linux</span>
-            <span class="tag tagv">Git &amp; CI/CD</span>
-            <span class="tag">VS Code Integration</span>
+            <span class="tag tagv">PySpark</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag tagv">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag tagv">Feature Engineering</span>
+            <span class="tag">Classification / Regression / Clustering</span>
+          </div>
+        </div>
+
+        <div class="sgroup glass rev d5">
+          <div class="sgroup-title">Cloud Infrastructure &amp; DevOps</div>
+          <div class="ptags" style="margin-top:-0.5rem">
+            <span class="tag tagv">AWS (SageMaker, Bedrock, EC2, S3, IAM)</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag tagv">Docker</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag tagv">Git</span>
+            <span class="tag">Linux / WSL</span>
+          </div>
+        </div>
+
+        <div class="sgroup glass rev d6">
+          <div class="sgroup-title">Software Engineering</div>
+          <div class="ptags" style="margin-top:-0.5rem">
+            <span class="tag tagv">Agile</span>
+            <span class="tag">SDLC</span>
+            <span class="tag tagv">B2B Architecture</span>
+            <span class="tag">Version Control</span>
           </div>
         </div>
 
@@ -93,6 +125,6 @@
   </main>
   <footer>Designed &amp; built by <em>RahulWadhai007</em> · &copy; 2026 · All agents operational.</footer>
 
-  <script src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>

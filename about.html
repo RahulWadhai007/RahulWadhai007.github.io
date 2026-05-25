@@ -6,10 +6,14 @@
   <title>Rahul Wadhai — AI Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <link rel="preload" href="assets/css/style.css" as="style" />
+  <link rel="preload" href="./portfolio/scene.gltf" as="fetch" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -46,16 +50,43 @@
           <h2 class="stitle">Building AI that<br/><span>Thinks &amp; Acts</span></h2>
         </div>
         <div class="atext rev d1">
-          <p>I'm <b>Rahul Wadhai</b> — an aspiring AI Engineer with a sharp focus on <i>Agentic AI</i> and <i>Deep Learning</i>. I design systems where LLMs don't just respond — they <b>plan, reflect, and self-correct</b>.</p>
-          <p>My stack revolves around <i>LangGraph</i> for stateful multi-agent orchestration and <i>FastAPI</i> for high-performance model serving. I pair AI capability with solid <b>DevOps fundamentals</b> — Docker, Kubernetes, and AWS — to ship production-ready solutions.</p>
+          <p>I'm <b class="name-hl">Rahul Wadhai</b> — a results-driven AI Developer currently completing my final semester, with a proven track record of moving rapidly from concept to execution. Focused on the practical application of modern AI methodologies, I thrive on building intelligent systems that enhance and automate user workflows.</p>
+          <p>My stack revolves around <i>LangChain</i> &amp; <i>LangGraph</i> for agentic orchestration, <i>FastAPI</i> for production model serving, and <i>PyTorch</i> with <i>Hugging Face</i> for LLM fine-tuning. I pair AI capability with solid <b>Cloud &amp; DevOps fundamentals</b> — AWS (SageMaker, Bedrock, EC2), Docker, Kubernetes — to ship production-ready solutions.</p>
+        </div>
 
-        </div>
+        <!-- EDUCATION -->
         <div class="edu-box rev d2">
-          <div class="edu-title">Bachelor of Technology — B.Tech</div>
-          <div class="edu-sub">8th Semester &nbsp;·&nbsp; Expected Graduation: <span>June 2026</span></div>
-          <div class="edu-sub" style="margin-top:.3rem">Focus: Neural Networks &nbsp;·&nbsp; Deep Learning &nbsp;·&nbsp; Cloud Infrastructure</div>
+          <div class="edu-title">B.Tech in Computer Engineering</div>
+          <div class="edu-sub">Bajaj Institute of Technology, Wardha (DBATU) &nbsp;·&nbsp; Wardha, Maharashtra</div>
+          <div class="edu-sub" style="margin-top:.3rem">Expected Graduation: <span>May 2026</span></div>
         </div>
-        <div style="margin-top:1.5rem;display:flex;gap:.8rem;flex-wrap:wrap" class="rev d3">
+
+        <!-- WORK EXPERIENCE -->
+        <div style="margin-top:2rem;" class="rev d3">
+          <p class="slbl" style="margin-bottom:1rem;">Work Experience</p>
+
+          <div class="edu-box" style="margin-bottom:1.2rem; border-left:2px solid var(--cyan); padding-left:1.2rem;">
+            <div class="edu-title" style="color:var(--cyan);">AI Engineer Intern (Remote)</div>
+            <div class="edu-sub">ASW Technology &nbsp;·&nbsp; Jan 2026 — May 2026</div>
+            <ul style="margin-top:.5rem; padding-left:1rem; font-size:.85rem; line-height:1.8; color:var(--muted); list-style:none;">
+              <li style="margin-bottom:.3rem;">▸ Engineered an internal <b style="color:var(--white);">RAG prototype</b> with LangChain &amp; Python for semantic search across company documentation.</li>
+              <li style="margin-bottom:.3rem;">▸ Deployed a lightweight <b style="color:var(--white);">REST API via FastAPI</b> to serve the AI model with low-latency query responses.</li>
+              <li>▸ Processed &amp; vectorized unstructured data (PDFs, text files), optimizing chunking strategies for improved LLM context retrieval.</li>
+            </ul>
+          </div>
+
+          <div class="edu-box" style="border-left:2px solid var(--violet); padding-left:1.2rem;">
+            <div class="edu-title" style="color:var(--violet);">Freelance AI Developer — Research &amp; NLP Systems</div>
+            <div class="edu-sub">Feb 2025 — Apr 2025</div>
+            <ul style="margin-top:.5rem; padding-left:1rem; font-size:.85rem; line-height:1.8; color:var(--muted); list-style:none;">
+              <li style="margin-bottom:.3rem;">▸ Architected a real-time <b style="color:var(--white);">Research Paper Recommendation System</b> using NLP text embeddings for semantic search.</li>
+              <li style="margin-bottom:.3rem;">▸ Engineered AI backend logic to parse complex academic queries with high-throughput, low-latency retrieval.</li>
+              <li>▸ Designed scalable data ingestion pipelines for continuous, real-time recommendation updates.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem;display:flex;gap:.8rem;flex-wrap:wrap" class="rev d4">
           <a href="https://github.com/RahulWadhai007" target="_blank" class="btn btn-g" style="font-size:.7rem;padding:.7rem 1.4rem;">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/rahul-wadhai-37229824b/" target="_blank" class="btn btn-g" style="font-size:.7rem;padding:.7rem 1.4rem;color:var(--cyan);border-color:rgba(34,211,238,.3);">LinkedIn ↗</a>
         </div>
@@ -67,6 +98,6 @@
   </main>
   <footer>Designed &amp; built by <em>RahulWadhai007</em> · &copy; 2026 · All agents operational.</footer>
 
-  <script src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>
