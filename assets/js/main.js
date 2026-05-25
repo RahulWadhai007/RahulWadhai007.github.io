@@ -56,7 +56,7 @@ scene.add(dirLight);
 // Load the Desktop PC model
 let pcModel;
 const loader = new THREE.GLTFLoader();
-loader.load('./portfolio/scene.gltf', function(gltf) {
+loader.load('./portfolio/scene.glb', function(gltf) {
   pcModel = gltf.scene;
   pcModel.scale.set(6, 6, 6);
   pcModel.position.set(0, -18, 0); 
