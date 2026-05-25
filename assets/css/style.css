@@ -170,7 +170,6 @@ section { position:relative; z-index:2; min-height:100vh; display:flex; align-it
 }
 /* Tactile :active pop — feels like the button jumps out */
 .btn:active {
-  transform: scale(1.05) !important;
   transition: transform 0.08s ease-out !important;
 }
 .btn::after { content:''; position:absolute; inset:0; opacity:0; background:var(--btn-shadow); transition:opacity .3s; }
@@ -212,7 +211,7 @@ section { position:relative; z-index:2; min-height:100vh; display:flex; align-it
 .about-grid { max-width:1100px; width:100%; display:grid; grid-template-columns:220px 1fr; gap:5rem; align-items:center; }
 
 .orb-wrap { display:flex; justify-content:center; position:relative; pointer-events: auto; }
-.orb-outer { position:absolute; width:270px; height:270px; border-radius:50%; border:1px dashed rgba(139,92,246,.18); animation:spin 22s linear infinite; }
+.orb-outer { position:absolute; width:270px; height:270px; border-radius:50%; border:1px dashed rgba(139,92,246,.18); }
 .orb-outer::before { content:''; position:absolute; top:-5px; left:50%; width:10px; height:10px; border-radius:50%; background:var(--violet); box-shadow:var(--gv); transform:translateX(-50%); }
 .orb {
   width:195px; height:195px; border-radius:50%;
@@ -221,7 +220,7 @@ section { position:relative; z-index:2; min-height:100vh; display:flex; align-it
   display:flex; align-items:center; justify-content:center;
   font-family:'Space Mono',monospace; font-size:2.8rem; color:var(--white);
   box-shadow:0 0 60px rgba(139,92,246,.18),inset 0 0 40px rgba(139,92,246,.06);
-  animation:pulse 4s ease-in-out infinite; position:relative; z-index:2;
+  position:relative; z-index:2;
 }
 
 .atext { pointer-events: auto; }
@@ -402,7 +401,6 @@ footer em { color:var(--vbright); font-style:normal; }
    BUTTON CLICK ANIMATION
    ═══════════════════════════════════════════════════════ */
 .btn-press {
-  transform: scale(0.92) !important;
   opacity: 0.8;
   transition: all 0.2s ease !important;
 }
