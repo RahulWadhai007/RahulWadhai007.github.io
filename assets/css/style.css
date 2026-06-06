@@ -60,8 +60,22 @@ body.light-mode::before {
                     linear-gradient(to bottom, rgba(100, 116, 139, 0.07) 1px, transparent 1px);
 }
 
-/* ─── CURSOR (disabled — using default system cursor) ─── */
-#cur-dot, #cur-ring { display: none; }
+/* ─── CURSOR ─── */
+#cur-dot {
+  position:fixed; width:8px; height:8px; border-radius:50%;
+  background:var(--cyan); pointer-events:none; z-index:9999;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 14px var(--cyan),0 0 28px rgba(34,211,238,.35);
+  transition:width .15s,height .15s;
+}
+#cur-ring {
+  position:fixed; width:34px; height:34px; border-radius:50%;
+  border:1px solid rgba(139,92,246,.45); pointer-events:none; z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:width .28s,height .28s,border-color .28s;
+}
+body.hov #cur-dot { width:14px; height:14px; }
+body.hov #cur-ring { width:54px; height:54px; border-color:rgba(139,92,246,.8); }
 
 /* ─── CANVAS + OVERLAY ─── */
 #neural { position:fixed; inset:0; z-index:0; }
