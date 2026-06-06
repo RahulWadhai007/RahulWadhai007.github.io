@@ -43,7 +43,8 @@
 /* ─── RESET ─── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-body { background:var(--bg); color:var(--white); transition:background 0.3s ease, color 0.3s ease; font-family:'DM Sans',sans-serif; overflow-x:hidden; }
+body { background:var(--bg); color:var(--white); transition:background 0.3s ease, color 0.3s ease; font-family:'DM Sans',sans-serif; overflow-x:hidden; cursor:none; }
+a, button, .pcard, .nav-btn, .theme-toggle { cursor:none !important; }
 
 /* ─── CYBER-GRID BACKGROUND ─── */
 body::before {
