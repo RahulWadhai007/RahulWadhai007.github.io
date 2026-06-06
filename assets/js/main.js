@@ -186,16 +186,50 @@ let t=0;
 // 3D TILT — VanillaTilt.js integration
 // ═══════════════════════════════════════════════════════
 function initTilt() {
-  if (typeof VanillaTilt !== 'undefined') {
-    VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
-      max: 8,
-      speed: 400,
-      glare: true,
-      "max-glare": 0.15,
-      scale: 1.05,
-      perspective: 1000
-    });
-  }
+  document.querySelectorAll('.pcard').forEach(card => {
+    if (card._tiltBound) return;
+    card._tiltBound = true;
+    card.style.transformStyle = 'preserve-3d';
+
+    const handleMove = (e) => {
+      let clientX, clientY;
+      if (e.touches && e.touches.length > 0) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+      }
+      const rect = card.getBoundingClientRect();
+      const x = clientX - rect.left; 
+      const y = clientY - rect.top; 
+      const w = rect.width;
+      const h = rect.height;
+      
+      const nx = (x / w - 0.5) * 2;
+      const ny = (y / h - 0.5) * 2;
+      
+      const MAX_TILT = 10; // Slightly more pronounced tilt
+      const tiltX = -ny * MAX_TILT;
+      const tiltY = nx * MAX_TILT;
+      const SCALE = 1.05; // Pop-out scale
+      
+      card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
+      card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(${SCALE}, ${SCALE}, ${SCALE})`;
+    };
+
+    const handleLeave = () => {
+      card.style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1), box-shadow 0.5s ease';
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    };
+
+    card.addEventListener('mousemove', handleMove);
+    card.addEventListener('mouseleave', handleLeave);
+    
+    card.addEventListener('touchstart', handleMove, {passive: true});
+    card.addEventListener('touchmove', handleMove, {passive: true});
+    card.addEventListener('touchend', handleLeave);
+  });
 }
 
 // ─── SCROLL REVEAL + SKILL BARS ───
