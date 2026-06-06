@@ -269,8 +269,9 @@ section { position:relative; z-index:2; min-height:100vh; display:flex; align-it
 
 .pcard {
   padding:2rem; transition:box-shadow .42s,border-color .42s;
-  position:relative; overflow:hidden;
+  position:relative; overflow:visible; /* Must be visible for 3D parallax to avoid clipping */
   pointer-events: auto;
+  transform-style: preserve-3d; /* Required for 3D parallax title effect */
   background:rgba(255,255,255,0.012) !important; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
   border:1px solid rgba(255,255,255,0.04); border-radius:4px; box-shadow:0 8px 32px rgba(0,0,0,0.1);
 }
@@ -279,13 +280,13 @@ section { position:relative; z-index:2; min-height:100vh; display:flex; align-it
   background:linear-gradient(90deg,var(--violet),var(--cyan));
   opacity:0; transition:opacity .3s;
 }
-.pcard:hover { border-color:rgba(139,92,246,.42); box-shadow:0 24px 60px rgba(0,0,0,.55),var(--gv); }
+.pcard:hover { border-color:rgba(139,92,246,.42); box-shadow:0 24px 60px rgba(0,0,0,.55),var(--gv); z-index: 10; }
 .pcard:hover::before { opacity:1; }
 
-.pnum { font-family:'Space Mono',monospace; font-size:.6rem; color:var(--violet); letter-spacing:.2em; margin-bottom:1rem; }
-.pico { font-size:1.9rem; margin-bottom:.8rem; filter:drop-shadow(0 0 10px rgba(139,92,246,.5)); }
-.ptitle { font-family:'Space Mono',monospace; font-size:1.15rem; font-weight:700; color:var(--white); margin-bottom:.6rem; }
-.pstack { font-family:'Space Mono',monospace; font-size:.6rem; color:var(--cyan); letter-spacing:.08em; margin-bottom:.9rem; opacity:1; }
+.pnum { font-family:'Space Mono',monospace; font-size:.6rem; color:var(--violet); letter-spacing:.2em; margin-bottom:1rem; transform: translateZ(20px); }
+.pico { font-size:1.9rem; margin-bottom:.8rem; filter:drop-shadow(0 0 10px rgba(139,92,246,.5)); transform: translateZ(40px); transition: transform 0.3s; }
+.ptitle { font-family:'Space Mono',monospace; font-size:1.15rem; font-weight:700; color:var(--white); margin-bottom:.6rem; transform: translateZ(50px); transition: transform 0.3s; }
+.pstack { font-family:'Space Mono',monospace; font-size:.6rem; color:var(--cyan); letter-spacing:.08em; margin-bottom:.9rem; opacity:1; transform: translateZ(30px); }
 
 /* Impact pills */
 .pimpact {
