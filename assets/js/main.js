@@ -161,9 +161,49 @@ let t=0;
 })();
 
 // ═══════════════════════════════════════════════════════
-// 3D TILT (disabled — cards stay static)
+// 3D TILT — Interactive perspective tilt on hover
+// Corner hover lifts that corner; center hover lifts whole card
 // ═══════════════════════════════════════════════════════
-function initTilt() { /* disabled */ }
+function initTilt() {
+  const MAX_TILT = 8;   // degrees
+  const PERSPECTIVE = 800; // px
+  const SCALE = 1.03;
+  const TRANSITION_OUT = 'transform 0.5s cubic-bezier(0.23,1,0.32,1), box-shadow 0.5s ease';
+  const TRANSITION_IN  = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
+
+  document.querySelectorAll('[data-tilt]').forEach(card => {
+    // Skip if already initialized
+    if (card._tiltInit) return;
+    card._tiltInit = true;
+    card.style.transformStyle = 'preserve-3d';
+
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;  // cursor X within card
+      const y = e.clientY - rect.top;   // cursor Y within card
+      const w = rect.width;
+      const h = rect.height;
+
+      // Normalize to -1 … +1 (center = 0)
+      const nx = (x / w - 0.5) * 2;
+      const ny = (y / h - 0.5) * 2;
+
+      // Tilt: rotateX is driven by Y position, rotateY by X position
+      const tiltX = -ny * MAX_TILT;  // top edge tilts forward
+      const tiltY =  nx * MAX_TILT;  // right edge tilts forward
+
+      card.style.transition = TRANSITION_IN;
+      card.style.transform = `perspective(${PERSPECTIVE}px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(${SCALE},${SCALE},${SCALE})`;
+      card.style.boxShadow = `${-nx * 15}px ${-ny * 15}px 40px rgba(139,92,246,0.12), 0 20px 60px rgba(0,0,0,0.3)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transition = TRANSITION_OUT;
+      card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+      card.style.boxShadow = '';
+    });
+  });
+}
 
 // ─── SCROLL REVEAL + SKILL BARS ───
 const io = new IntersectionObserver(entries=>{
@@ -249,6 +289,9 @@ function reInitDOM() {
   
   // Re-trigger entrance animations with staggered delays
   triggerEntranceAnimations();
+
+  // Re-init 3D tilt on new cards
+  initTilt();
 }
 
 
@@ -335,4 +378,5 @@ function triggerEntranceAnimations() {
 document.addEventListener('DOMContentLoaded', () => {
   triggerEntranceAnimations();
   initGodmodePhysics();
+  initTilt();
 });
