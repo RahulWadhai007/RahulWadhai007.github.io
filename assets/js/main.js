@@ -186,7 +186,7 @@ let t=0;
 // 3D TILT — VanillaTilt.js integration
 // ═══════════════════════════════════════════════════════
 function initTilt() {
-  document.querySelectorAll('.pcard').forEach(card => {
+  document.querySelectorAll('.pcard, .ach-card, [data-tilt]').forEach(card => {
     if (card._tiltBound) return;
     card._tiltBound = true;
     card.style.transformStyle = 'preserve-3d';
@@ -200,26 +200,19 @@ function initTilt() {
         clientX = e.clientX;
         clientY = e.clientY;
       }
-      const rect = card.getBoundingClientRect();
-      const x = clientX - rect.left; 
-      const y = clientY - rect.top; 
-      const w = rect.width;
-      const h = rect.height;
+      const r = card.getBoundingClientRect();
+      const cx = (clientX - r.left) / r.width - 0.5;
+      const cy = (clientY - r.top) / r.height - 0.5;
       
-      const nx = (x / w - 0.5) * 2;
-      const ny = (y / h - 0.5) * 2;
-      
-      const MAX_TILT = 10; // Slightly more pronounced tilt
-      const tiltX = -ny * MAX_TILT;
-      const tiltY = nx * MAX_TILT;
-      const SCALE = 1.05; // Pop-out scale
-      
-      card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
-      card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(${SCALE}, ${SCALE}, ${SCALE})`;
+      // Fast, instantaneous snappy tracking from the local environment!
+      card.style.transition = 'none'; 
+      // Using 1000px perspective so the transparent glass pop-out effect still looks balanced
+      card.style.transform = `perspective(1000px) rotateY(${cx * 15}deg) rotateX(${-cy * 11}deg) scale3d(1.05, 1.05, 1.05)`;
     };
 
     const handleLeave = () => {
-      card.style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1), box-shadow 0.5s ease';
+      // Smooth reset
+      card.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
       card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
     };
 
