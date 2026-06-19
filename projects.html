@@ -141,6 +141,25 @@
           </div>
         </div>
 
+        <!-- Project 6: Project Occam -->
+        <div class="pcard glass rev d6" data-tilt>
+          <div class="pnum">// PROJECT_06 · Distributed Streaming RAG</div>
+          <div class="pico">🌊</div>
+          <div class="ptitle">Project Occam: Semantic Deduplication Pipeline</div>
+          <div class="pstack">Apache Flink · Kafka · ONNX · Milvus · PyArrow</div>
+          <div class="pimpact">
+            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Challenge:</b> Incident streams contain 85%+ redundancy. Routing this firehose directly to a cloud embedding API or vector database wastes money and massively bloats storage.</span></div>
+            <div class="pimpact-row"><span class="bullet">▸</span><span><b>Solution:</b> Engineered a distributed semantic gatekeeper using PyFlink and RocksDB. A local ONNX embedding model with SimHash LSH bucketing drops near-duplicate logs in real-time <i>before</i> they reach the cloud, drastically reducing API spend while preserving novel semantic intelligence.</span></div>
+          </div>
+          <div class="metric">📉 Cuts embedding spend and Milvus storage by dropping 85%+ redundancy</div>
+          <div class="ptags">
+            <span class="tag tagv">PyFlink</span><span class="tag">Kafka</span><span class="tag tagv">ONNX</span><span class="tag">Milvus</span><span class="tag tagv">RocksDB</span><span class="tag">Python</span>
+          </div>
+          <div style="margin-top:1.5rem; display:flex; gap:0.6rem; flex-wrap:wrap">
+            <a href="https://github.com/RahulWadhai007/Project-Occam" target="_blank" class="btn btn-g" style="font-size:0.65rem; padding:0.65rem 1rem; flex:1; justify-content:center; color:var(--white);">[&lt;&gt;] View Source</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
